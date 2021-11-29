@@ -17,11 +17,13 @@ import 'data/core/utils/network/network_info.dart' as _i6;
 import 'domain/auth/repositories/auth_repository.dart' as _i9;
 import 'domain/auth/usecases/get_signed_in_user_use_case.dart' as _i11;
 import 'domain/auth/usecases/login_use_case.dart' as _i12;
+import 'domain/auth/usecases/signup_use_case.dart' as _i13;
 import 'domain/core/utils/network/network_info.dart' as _i5;
-import 'injectable_module.dart' as _i15;
-import 'presentation/auth/blocs/auth/auth_bloc.dart' as _i13;
-import 'presentation/auth/blocs/login/login_bloc.dart'
-    as _i14; // ignore_for_file: unnecessary_lambdas
+import 'injectable_module.dart' as _i17;
+import 'presentation/auth/blocs/auth/auth_bloc.dart' as _i14;
+import 'presentation/auth/blocs/login/login_bloc.dart' as _i15;
+import 'presentation/auth/blocs/signup/signup_bloc.dart'
+    as _i16; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -48,10 +50,13 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       () => _i11.GetSignedInUserUseCase(get<_i9.AuthRepository>()));
   gh.lazySingleton<_i12.LoginUseCase>(
       () => _i12.LoginUseCase(get<_i9.AuthRepository>()));
-  gh.factory<_i13.AuthBloc>(
-      () => _i13.AuthBloc(get<_i11.GetSignedInUserUseCase>()));
-  gh.factory<_i14.LoginBloc>(() => _i14.LoginBloc(get<_i12.LoginUseCase>()));
+  gh.lazySingleton<_i13.SignupUseCase>(
+      () => _i13.SignupUseCase(get<_i9.AuthRepository>()));
+  gh.factory<_i14.AuthBloc>(
+      () => _i14.AuthBloc(get<_i11.GetSignedInUserUseCase>()));
+  gh.factory<_i15.LoginBloc>(() => _i15.LoginBloc(get<_i12.LoginUseCase>()));
+  gh.factory<_i16.SignupBloc>(() => _i16.SignupBloc(get<_i13.SignupUseCase>()));
   return get;
 }
 
-class _$InjectableModule extends _i15.InjectableModule {}
+class _$InjectableModule extends _i17.InjectableModule {}
