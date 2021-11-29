@@ -8,5 +8,5 @@ Future<void> main() async {
 
   await configureInjection(Environment.dev);
 
-  runApp(const App());
+  runApp(App());
 }
