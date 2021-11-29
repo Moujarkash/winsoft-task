@@ -66,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage>
         } else if (state is SignupSuccess) {
           stopLoading();
 
-          AutoRouter.of(context).replace(const HomePageRoute());
+          AutoRouter.of(context).replace(const MainPageRoute());
         }
       },
       child: Scaffold(

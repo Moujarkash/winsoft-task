@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
               final user = state.user;
 
               if (user != null) {
-                AutoRouter.of(context).replace(const HomePageRoute());
+                AutoRouter.of(context).replace(const MainPageRoute());
               } else {
                 AutoRouter.of(context).replace(const LoginPageRoute());
               }

@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage>
         } else if (state is LoginSuccess) {
           stopLoading();
 
-          AutoRouter.of(context).replace(const HomePageRoute());
+          AutoRouter.of(context).replace(const MainPageRoute());
         }
       },
       child: Scaffold(
